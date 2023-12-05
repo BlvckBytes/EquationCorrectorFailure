@@ -14,7 +14,7 @@ class AcrossColumnsDistribution {
       }
     }
 
-    private fun generatePermutations(total: Int, numberOfColumns: Int): List<IntArray> {
+    fun generatePermutations(total: Int, numberOfColumns: Int): List<IntArray> {
       val result = mutableListOf<IntArray>()
 
       val rootTemplate = IntArray(numberOfColumns) { 0 }

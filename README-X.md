@@ -73,3 +73,15 @@ There is no way to satisfy this equality by appending or prepending threes in an
 ```
 
 You've got to be kidding me... exponentiation is an allowed operation in this puzzle. Am I really the only one who interpreted the constraints in the above described way?
+
+## Adding Exponentiation
+
+To make sure that their solution is the only one possible, I've added the exponent of each column to the per-column distribution. The permutations are now generated just like the number of threes per columns are generated, as these three slots (before, exponent, after) can be thought of as individual sub-columns. The total number of cases increased by over four times, but there really is only one solution:
+
+```txt
+Minimum delta accomplished: 0, with:
+
+2^3 + 7^3 = 13 * 3^3 [(0, 1, 0), (0, 1, 0), (0, 0, 1), (0, 1, 0)]
+
+Tried 1365 permutations in total
+```

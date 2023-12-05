@@ -1,10 +1,12 @@
 package me.blvckbytes.equation_corrector
 
-import kotlin.math.abs
+import java.math.BigInteger
 
 class EquationCorrector {
 
   companion object {
+    private const val withExponentiation = true
+
     @JvmStatic
     fun main(args: Array<String>) {
       val totalAmountOfAdditionalDigits = 4
@@ -14,7 +16,7 @@ class EquationCorrector {
 
       var totalPermutations = 0
 
-      var minDelta: Int? = null
+      var minDelta: BigInteger? = null
       val minDeltaPermutations = mutableListOf<List<PerColumnDistribution>>()
 
       // Distributions of additional digits across columns
@@ -24,7 +26,7 @@ class EquationCorrector {
         // Number of additional digits per each column
         for (columnTotal in acrossColumnPermutation) {
           // Permutations of adding this number of additional digits to the column value
-          val perColumnPermutations = PerColumnDistribution.getPermutations(columnTotal)
+          val perColumnPermutations = PerColumnDistribution.getPermutations(columnTotal, withExponentiation)
           columnPermutations.add(perColumnPermutations)
         }
 
@@ -42,7 +44,7 @@ class EquationCorrector {
           val c = equationPermutation[2].apply(1, 3)
           val d = equationPermutation[3].apply(3, 3)
 
-          val delta = abs((a + b) - (c * d))
+          val delta = ((a + b) - (c * d)).abs()
 
           if (minDelta == null || minDelta > delta) {
             minDelta = delta
